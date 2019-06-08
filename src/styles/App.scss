@@ -1,0 +1,100 @@
+$normal-w: 80vw;
+$landscape-w: 70vh;
+$selected-color: #CC5500;
+
+body {
+    font-family: 'Roboto Condensed', Helvetica, Arial, sans-serif;
+    user-select: none;
+}
+
+h1 {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 8vh;
+    font-weight: 600;
+}
+
+#score {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    text-align: center;
+    opacity: 0.4;
+    font-size: 3vh;
+}
+
+.game-board {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+
+    .cell-board {
+        width: $normal-w;
+        height: $normal-w;
+
+        .cell {
+            margin: 1%;
+            float: left;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-sizing: border-box;
+            border-radius: 50%;
+            border: 1px solid gray;
+
+            &.selected {
+                background-color: $selected-color;
+                border-color: $selected-color;
+                color: white;
+            }
+        }
+    }
+}
+
+#timer {
+    display: flex;
+    padding-top: 1vh;
+    align-content: flex-start;
+    justify-content: center;
+
+    p {
+        position: absolute;
+        text-align: center;
+        font-size: 4vh;
+        line-height: 1em;
+        height: auto;
+        margin: 0;
+        padding: 0;
+    }
+
+    #fuck {
+        margin-left: auto;
+    }
+}
+
+@media screen and (orientation: landscape) {
+
+    h1 {
+        font-size: 9vh;
+    }
+
+    #score {
+        font-size: 3vh;
+    }
+
+    .game-board {
+        .cell-board {
+            width: $landscape-w;
+            height: $landscape-w;
+        }
+    }
+
+    #timer {
+        p {
+            font-size: 7vh;
+        }
+    }
+}

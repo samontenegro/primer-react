@@ -1,0 +1,110 @@
+body {
+  font-family: 'Roboto Condensed', Helvetica, Arial, sans-serif;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+h1 {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  text-align: center;
+  font-size: 8vh;
+  font-weight: 600;
+}
+
+#score {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  text-align: center;
+  opacity: 0.4;
+  font-size: 3vh;
+}
+
+.game-board {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.game-board .cell-board {
+  width: 80vw;
+  height: 80vw;
+}
+
+.game-board .cell-board .cell {
+  margin: 1%;
+  float: left;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-radius: 50%;
+  border: 1px solid gray;
+}
+
+.game-board .cell-board .cell.selected {
+  background-color: #CC5500;
+  border-color: #CC5500;
+  color: white;
+}
+
+#timer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding-top: 1vh;
+  -ms-flex-line-pack: start;
+      align-content: flex-start;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#timer p {
+  position: absolute;
+  text-align: center;
+  font-size: 4vh;
+  line-height: 1em;
+  height: auto;
+  margin: 0;
+  padding: 0;
+}
+
+#timer #fuck {
+  margin-left: auto;
+}
+
+@media screen and (orientation: landscape) {
+  h1 {
+    font-size: 9vh;
+  }
+  #score {
+    font-size: 3vh;
+  }
+  .game-board .cell-board {
+    width: 70vh;
+    height: 70vh;
+  }
+  #timer p {
+    font-size: 7vh;
+  }
+}
+/*# sourceMappingURL=App.css.map */
