@@ -4,6 +4,10 @@ import Timer from './Timer.js';
 import '../styles/App.css';
 
 class App extends Component {
+  constructor () {
+    super ()
+    this.selectedCells = [];
+  }
 
   _isPrime (num) {
         if (num === 1) return true;
@@ -39,7 +43,7 @@ class App extends Component {
     diff: 400,
     maxTime: null,
     score: 0,
-    n: 4,
+    n: 2,
     data: [],
     orient: false,
   }
@@ -47,7 +51,7 @@ class App extends Component {
   componentWillMount () {
     this.setState({
       data: this.makeData(this.state.n),
-      maxTime: Math.floor((this.state.n**2 ) * 0.8),
+      maxTime: Math.floor((this.state.n**2 ) * 0.8) + 3,
       diff: (this.state.n * 100),
     });
   }
@@ -57,7 +61,7 @@ class App extends Component {
   }
 
   componentDidUpdate (prevProps, prevState) {
-    if (prevProps.orient === true) {
+    if (prevState.orient === true) {
       this.setState({orient: false});
     }
   }
@@ -73,7 +77,7 @@ class App extends Component {
                 val += 1;
                 continue
           } else {
-                data[mapping[i]] = {val: val, prime: false};
+                data[mapping[i]] = {val: val, prime: false, id: mapping[i]};
               break
           }
         }
@@ -81,11 +85,13 @@ class App extends Component {
         let valPrime = Math.floor((val + this._getRandomInt(this.state.diff)) / 4);
         while (true) {
           if (this._isPrime(valPrime)) {
-              data[mapping[i+1]] = {val: val, prime: false};
+              data[mapping[i+1]] = {val: valPrime, prime: true, id: mapping[i+1]};
               break
           }
           valPrime += 1
         }
+
+        this.selectedCells[i+1] = this.selectedCells[i] = false;
       }
 
       return data
@@ -100,17 +106,36 @@ class App extends Component {
     });
   };
 
+  cellHook = (cellData) => {
+    let { id, selected } = cellData;
+    this.selectedCells[id] = selected;
+  }
+
   fillCells = () => {
-    let cells = this.state.data.map((value) => {
+    let cells = this.state.data.map((data) => {
       return (
-        <Cell value={value.val} n={this.state.n} key={Math.random()}/>
+        <Cell value={data.val} n={this.state.n} id={data.id} cellHook={this.cellHook} key={Math.random()}/>
       )
     });
     return cells
   };
 
-  acceptRound = () => {
-    this.setState({data: this.makeData(this.state.n)});
+  acceptRound = (f,time) => {
+    let status = true;
+    for (let i = 0; i < this.state.n ** 2; i++) {
+      if (this.state.data[i].prime !== this.selectedCells[i]) {
+        status = false;
+        break
+      }
+    }
+
+    if (status && time >= 1) {
+      let timerStatus = f();
+      this.setState({
+        data: this.makeData(this.state.n),
+        score: this.state.score + (this.state.diff * timerStatus),
+      });
+    }
   }
 
   render() {

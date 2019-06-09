@@ -2,8 +2,19 @@ import React, { Component } from 'react';
 
 class Cell extends Component {
     
-    handleClick= (e) => {
+    state = {
+        selected: false,
+    }
+
+    handleClick = (e) => {
         e.target.classList.toggle('selected');
+        if (!this.state.selected) {
+            this.setState({selected: true});
+            return {id: this.props.id, selected: true}
+        } else {
+            this.setState({selected: false});
+            return {id: this.props.id, selected: false}
+        }
     };
 
     render () {
@@ -24,7 +35,12 @@ class Cell extends Component {
         };
 
         return (
-            <div className="cell" style={sizes} onClick={this.handleClick}>{this.props.value}</div>
+            <div className="cell" style={sizes} onClick={(e) => {
+                // this.handleClick(e);
+                this.props.cellHook(this.handleClick(e));
+                }}>
+                {this.props.value}
+            </div>
         )
     }
 }

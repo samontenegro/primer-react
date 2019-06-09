@@ -16,7 +16,7 @@ class Timer extends Component {
                     t -= 1;
                     component.setState({currentTime: t});
                 } else {
-                    component.setState({currentTime: t-1});
+                    component.setState({currentTime: `Time's up!`});
                     clearInterval(timer);
                 }
             }, 1000);
@@ -28,23 +28,22 @@ class Timer extends Component {
     }
 
     resetTime = () => {
-        clearInterval(this.state.timerId);
-        this.setState({
-            currentTime: this.props.maxTime,
-            timerId: this._startTimer(this.props.maxTime),
-        });
+        if (this.state.currentTime >= 1) {
+            clearInterval(this.state.timerId);
+            this.setState({
+                currentTime: this.props.maxTime,
+                timerId: this._startTimer(this.props.maxTime),
+            });
+            return this.state.currentTime
+        }
     }
 
     render () {
         return (
-            <div id="timer">
+            <div id="timer" className={
+                this.state.currentTime === `Time's up!` ? "ended" : "running"} 
+                onClick={() => {this.props.acceptRound(this.resetTime,this.state.currentTime)}}>
                 <p>{this.state.currentTime}</p>
-                <button id="fuck" onClick={() => {
-                    this.resetTime();
-                    this.props.acceptRound();
-                    }}>
-                    click me
-                </button>
             </div>
         )
     }
