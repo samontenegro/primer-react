@@ -189,7 +189,7 @@ h1 {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  height: 80vh;
+  height: 75vh;
 }
 
 .main #app #score {
