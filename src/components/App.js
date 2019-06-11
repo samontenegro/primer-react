@@ -40,7 +40,7 @@ class App extends Component {
   }
 
   state = {
-    diff: 400,
+    diff: 200,
     maxTime: null,
     score: 0,
     n: 2,
@@ -50,9 +50,10 @@ class App extends Component {
 
   componentWillMount () {
     this.setState({
-      data: this.makeData(this.state.n),
-      maxTime: Math.floor((this.state.n**2 ) * 0.8) + 3,
-      diff: (this.state.n * 100),
+      n: this.props.diff,
+      data: this.makeData(this.props.diff),
+      maxTime: Math.floor((this.props.diff**2 ) * 0.8) + 3,
+      diff: (this.props.diff * 100),
     });
   }
 
@@ -139,19 +140,18 @@ class App extends Component {
   }
 
   render() {
-    return (
-      <div className="App">
-        <h1 className="title">Primer </h1>
-        <p id="score">{this.state.score}</p>
-        <div className="game-board">
-          <div className="cell-board">
-            {this.fillCells()}
+      return (
+        <div id="app">
+          <p id="score">{this.state.score}</p>
+          <div className="game-board">
+            <div className="cell-board">
+              {this.fillCells()}
+            </div>
           </div>
+          <Timer maxTime={this.state.maxTime} acceptRound={this.acceptRound}/>
         </div>
-        <Timer maxTime={this.state.maxTime} acceptRound={this.acceptRound}/>
-      </div>
-    )
+      )
+    }
   }
-}
 
 export default App;

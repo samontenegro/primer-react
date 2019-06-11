@@ -1,3 +1,155 @@
+.menu {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.menu-container {
+  width: 80vw;
+  text-align: center;
+}
+
+.menu-container h2 {
+  margin: 0 0 2vh 0;
+  padding: 0;
+  font-size: 3.5vh;
+}
+
+.menu .start {
+  display: block;
+}
+
+.menu-content {
+  padding: 4vh 0 4vh 0;
+}
+
+.menu-content p {
+  padding: 0;
+  margin: 0 0 1vh 0;
+  font-size: 3.5vh;
+}
+
+.menu-content ul {
+  padding: 0;
+  margin: 1vh 0 0 0;
+}
+
+.menu-content ul li {
+  list-style: none;
+  font-size: 3vh;
+  margin-bottom: 2vh;
+}
+
+.menu-content ul li:last-child {
+  margin-bottom: 0;
+}
+
+#level {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: inherit;
+  margin: 3vh 0 3vh 0;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+}
+
+#level .difficulty {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 24.66667vw;
+  height: 24.66667vw;
+  margin: 0 1vw 0 1vw;
+  border-radius: 50%;
+  border: solid 1px gray;
+  font-size: 2.5vh;
+}
+
+#level .difficulty.selected {
+  background-color: #CC5500;
+  border-color: #CC5500;
+  color: white;
+}
+
+@media (orientation: landscape) {
+  #level .difficulty {
+    width: 21.33333vh;
+    height: 21.33333vh;
+    font-size: 4vh;
+  }
+}
+
+#timer, #start {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 1vh auto 0 auto;
+  width: 53.33333vw;
+  height: 7vh;
+  padding-top: 1vh;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border: 1px solid gray;
+  border-radius: 4vh;
+  -webkit-box-shadow: 0 2px 0 gray;
+          box-shadow: 0 2px 0 gray;
+  -webkit-transition: all 25ms ease-in-out;
+  transition: all 25ms ease-in-out;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+}
+
+#timer.running:active, #start.running:active {
+  background-color: #CC5500;
+  border-color: #CC5500;
+  color: white;
+  border: none;
+  -webkit-transform: translateY(0.5vh);
+          transform: translateY(0.5vh);
+}
+
+#timer p, #start p {
+  text-align: center;
+  font-size: 5vh;
+  margin: 0;
+  padding: 0;
+}
+
+hr {
+  border: 0;
+  margin: 0;
+  clear: both;
+  display: block;
+  background-color: gray;
+  height: 1px;
+}
+
 body {
   font-family: 'Roboto Condensed', Helvetica, Arial, sans-serif;
   -webkit-user-select: none;
@@ -17,7 +169,30 @@ h1 {
   font-weight: 600;
 }
 
-#score {
+.main h1.title {
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+  height: 10vh;
+}
+
+.main #app {
+  -ms-grid-row: 2;
+      grid-row-start: 2;
+  grid-row-end: end;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  height: 85vh;
+}
+
+.main #app #score {
   margin: 0;
   padding: 0;
   width: 100%;
@@ -68,59 +243,38 @@ h1 {
   color: white;
 }
 
-#timer {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  margin: 1vh auto 0 auto;
-  width: 53.33333vw;
-  height: 7vh;
-  padding-top: 1vh;
-  -ms-flex-line-pack: center;
-      align-content: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  border: 1px solid gray;
-  border-radius: 4vh;
-  -webkit-box-shadow: 0 2px 0 gray;
-          box-shadow: 0 2px 0 gray;
-  -webkit-transition: all 25ms ease-in-out;
-  transition: all 25ms ease-in-out;
+#start {
+  margin-top: 2vh;
 }
 
-#timer.running:active {
+#start.selected {
   background-color: #CC5500;
   border-color: #CC5500;
   color: white;
-  border: none;
   -webkit-transform: translateY(0.5vh);
           transform: translateY(0.5vh);
 }
 
-#timer p {
-  text-align: center;
-  font-size: 5vh;
-  margin: 0;
-  padding: 0;
-}
-
-@media screen and (orientation: landscape) {
-  h1 {
-    font-size: 9vh;
+@media (orientation: landscape) {
+  .main h1.title {
+    height: 8vh;
+    font-size: 6vh;
   }
-  #score {
+  .main #app {
+    height: 80vh;
+  }
+  .main #app #score {
     font-size: 3vh;
   }
   .game-board .cell-board {
     width: 70vh;
     height: 70vh;
   }
-  #timer {
+  #timer, #start {
     width: 35vh;
     height: 8.4vh;
   }
-  #timer p {
+  #timer p, #start p {
     font-size: 6vh;
   }
 }

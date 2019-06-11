@@ -1,0 +1,29 @@
+#timer, #start{
+    display: flex;
+    margin: 1vh auto 0 auto;
+    width: $normal-w / 1.5;
+    height: 7vh;
+    padding-top: 1vh;
+    align-content: center;
+    justify-content: center;
+
+    border: $cell-border;
+    border-radius: 4vh;
+
+    box-shadow: 0 2px 0 gray;
+    transition: $transition-style;
+    align-self: flex-end;
+
+    &.running:active { 
+        @include clickStyle;
+        border: none;
+        transform: translateY(0.5vh);
+    }
+
+    p {
+        text-align: center;
+        font-size: 5vh;
+        margin: 0;
+        padding: 0;
+    }
+}

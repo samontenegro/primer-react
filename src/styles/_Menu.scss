@@ -1,0 +1,95 @@
+@mixin clickStyle {
+    background-color: $selected-color;
+    border-color: $selected-color;
+    color: white;
+}
+
+.menu {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    &-container {
+        width: $normal-w;
+        text-align: center;
+
+        h2 {
+            margin: 0 0 2vh 0;
+            padding: 0;
+            font-size: 3.5vh;
+        }
+    }
+
+    .start {
+        display: block;
+    }
+
+}
+
+.menu-content {
+    padding: 4vh 0 4vh 0;
+
+    p {
+        padding: 0;
+        margin: 0 0 1vh 0;
+        font-size: 3.5vh;
+    }
+
+    ul {
+        padding: 0;
+        margin: $content-top-margin;
+
+        li {
+            list-style: none;
+            font-size: 3vh;
+            margin-bottom: 2vh;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+}
+
+#level {
+    display: flex;
+    width: inherit;
+
+    margin: 3vh 0 3vh 0;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    .difficulty {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        width: ($normal-w / 3) - 2vw;
+        height: ($normal-w / 3) - 2vw;
+        margin: 0 1vw 0 1vw;
+
+        border-radius: 50%;
+        border: solid 1px gray;
+
+        font-size: 2.5vh;
+
+        &.selected { @include clickStyle() }
+    }
+}
+
+
+@media (orientation: landscape) {
+    #level {
+        .difficulty {
+            width: ($landscape-w / 3) - 2vh;
+            height: ($landscape-w / 3) - 2vh;
+
+            font-size: 4vh;
+        }
+    }
+
+    
+}
