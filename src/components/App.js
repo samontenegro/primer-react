@@ -134,7 +134,7 @@ class App extends Component {
       let timerStatus = f();
       this.setState({
         data: this.makeData(this.state.n),
-        score: this.state.score + (this.state.diff * timerStatus),
+        score: this.state.score + (this.state.n * this.state.diff * timerStatus),
       });
     }
   }
