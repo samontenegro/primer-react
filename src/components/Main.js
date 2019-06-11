@@ -28,7 +28,7 @@ class Main extends Component {
                 <h1 className="title">Primer</h1>
                 {
                     this.state.playing ? 
-                    <App diff={this.state.diff}/> :
+                    <App N={this.state.diff}/> :
                     <Menu playHook={this.playHook} init={this.initGame}/>
                     
                 }

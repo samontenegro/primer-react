@@ -50,10 +50,10 @@ class App extends Component {
 
   componentWillMount () {
     this.setState({
-      n: this.props.diff,
-      data: this.makeData(this.props.diff),
-      maxTime: Math.floor((this.props.diff**2 ) * 0.8) + 3,
-      diff: (this.props.diff * 100),
+      n: this.props.N,
+      data: this.makeData(this.props.N),
+      maxTime: Math.floor((this.props.N**2 ) * 0.8) + 3,
+      diff: (this.props.N * 100),
     });
   }
 
