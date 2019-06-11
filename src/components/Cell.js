@@ -19,12 +19,12 @@ class Cell extends Component {
 
     render () {
         let fontSize;
-        let orientation = window.screen.orientation.type;
+        let orientation = window.matchMedia("(orientation: landscape)");
 
-        if (orientation === "portrait-primary") {
-            fontSize = { val: 80, unit: 'vw' };
-        } else {
+        if (orientation.matches) {
             fontSize = { val: 70, unit: 'vh' };
+        } else {
+            fontSize = { val: 80, unit: 'vw' };
         }
 
         let cellWidth = (100 / this.props.n) - 2;
