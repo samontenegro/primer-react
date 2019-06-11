@@ -39,13 +39,9 @@ h1 {
     }
 
     #app {
-        grid-row-start: 2;
-        grid-row-end: end;
-
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-
         height: 75vh;
 
         #score {
